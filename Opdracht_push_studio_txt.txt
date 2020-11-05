@@ -1,0 +1,33 @@
+Hoi,
+Je bent aanbeland bij het tweede deel van je sollicitatie bij Mediahuis.
+We hebben voor jou een opdracht waarin jij al je dev-skills kan tonen.
+
+We zien van jou graag een applicatie waarin je gemakkelijk push notificaties kan sturen over nieuws artikels.
+Het is NIET de bedoeling om een volledig werkende applicatie te maken op deze korte tijd (mag natuurlijk altijd).
+Wel is het de bedoeling dat we aan de hand van deze oefening je als dev kunnen leren kennen en je denkpatroon, manier van werken ontdekken.
+Wil je dit doen aan de hand van (stukken) code, zeer goed. Wil je liever met diagrammen e.d. uitleggen hoe je deze opdracht zou invullen? Even goed!
+
+De applicatie waarover we spreken zou het volgende te kunnen.
+
+FRONT-END:
+- Je moet een lijst kunnen maken van 1 of meerdere notificaties die je wil versturen.
+- Je moet aan die lijst een nieuwe notificatie kunnen toevoegen.
+	- Bij een nieuwe notificatie moet je een titel en een body meegeven.
+- Je moet een notificatie in de lijst kunnen aanpassen (titel, body).
+- Je moet een notificatie in de lijst kunnen verwijderen.
+- Je moet de lijst met notificaties naar de API (die je ook zelf schrijft) kunnen versturen.
+
+API:
+- Je moet in de API de notificaties die je vanuit front-end stuurt kunnen ontvangen.
+- Je moet de gegevens doorsturen naar een externe API (Wij gebruiken Airship, maar je mag gewoon mocken).
+	- Let hierbij op dat je naar de externe API maar 1 notificatie per keer kan sturen.
+- Je moet een historiek kunnen bijhouden van alle effectief verstuurde push notificaties.
+
+DENK OOK AAN:
+- Validatie
+	- Is 1 push in de lijst niet valid, mag niets gestuurd worden.
+	- loopt er bij het sturen naar de externe API (Airhip) iets mis, moeten de andere pushes uit de lijst nog wel verstuurd proberen worden (en in de historiek komen).
+- Technologieën (te gebruiken)
+	- react.js
+	- .net core (c#)
+	- SQL DB

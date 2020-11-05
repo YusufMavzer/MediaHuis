@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package MediaHuis.Contracts.Notifications;
+option csharp_namespace = "MediaHuis.Contracts.Notifications";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+message NotificationMessage {
+  google.protobuf.StringValue id = 1;
+  int32 version = 2;
+  google.protobuf.Timestamp created = 3;
+  google.protobuf.Timestamp last_updated = 4;
+  google.protobuf.StringValue title = 5;
+  google.protobuf.StringValue body = 6;
+  MediaHuis.Contracts.Notifications.NotificationMessageStatus status = 7;
+  
+}
+
+enum NotificationMessageStatus {
+  NOTIFICATION_MESSAGE_STATUS_PENDING = 0;
+  NOTIFICATION_MESSAGE_STATUS_FAILED = 1;
+  NOTIFICATION_MESSAGE_STATUS_PROCESSED = 2;
+}

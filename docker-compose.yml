@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  media-huis-sql-server-db:
+    container_name: media-huis-sql-server-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "s0me_S3cr3t-p@ssw0rd"
+      ACCEPT_EULA: "Y"
+  media-huis-rabbitmq:
+    container_name: media-huis-rabbitmq
+    image: rabbitmq:3.8-management
+    ports:
+      - 15672:15672
+      - 5672:5672

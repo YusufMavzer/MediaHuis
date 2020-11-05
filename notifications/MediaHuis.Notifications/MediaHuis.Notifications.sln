@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHuis.Notifications", "MediaHuis.Notifications\MediaHuis.Notifications.csproj", "{500FF4D9-6FCA-49E5-BDAA-B958F6B4ABE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHuis.Notifications.Api", "MediaHuis.Notifications.Api\MediaHuis.Notifications.Api.csproj", "{1FF58D33-28B4-4BA8-B3B7-0CF2899E2C76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHuis.Contracts", "MediaHuis.Contracts\MediaHuis.Contracts.csproj", "{5DD9AC75-D97D-43A3-A9CC-FB64E843B63B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaHuis.Notifications.WorkerService", "MediaHuis.Notifications.WorkerService\MediaHuis.Notifications.WorkerService.csproj", "{211E2103-8128-41AE-9091-3B9A52B1F290}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{500FF4D9-6FCA-49E5-BDAA-B958F6B4ABE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{500FF4D9-6FCA-49E5-BDAA-B958F6B4ABE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{500FF4D9-6FCA-49E5-BDAA-B958F6B4ABE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{500FF4D9-6FCA-49E5-BDAA-B958F6B4ABE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FF58D33-28B4-4BA8-B3B7-0CF2899E2C76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FF58D33-28B4-4BA8-B3B7-0CF2899E2C76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FF58D33-28B4-4BA8-B3B7-0CF2899E2C76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FF58D33-28B4-4BA8-B3B7-0CF2899E2C76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD9AC75-D97D-43A3-A9CC-FB64E843B63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD9AC75-D97D-43A3-A9CC-FB64E843B63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD9AC75-D97D-43A3-A9CC-FB64E843B63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD9AC75-D97D-43A3-A9CC-FB64E843B63B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{211E2103-8128-41AE-9091-3B9A52B1F290}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211E2103-8128-41AE-9091-3B9A52B1F290}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211E2103-8128-41AE-9091-3B9A52B1F290}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211E2103-8128-41AE-9091-3B9A52B1F290}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
