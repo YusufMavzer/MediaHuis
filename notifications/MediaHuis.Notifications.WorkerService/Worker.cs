@@ -16,12 +16,15 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace MediaHuis.Notifications.WorkerService
 {
-    public class Worker : BackgroundService
+    public class Worker : BackgroundService, IDisposable
     {
+        private bool _disposed = false;
         private readonly ILogger<Worker> _logger;
         private readonly AirshipClient _airship;
         private readonly ConnectionFactory _rabbitMqConnectionFactory;
-
+        private readonly IConnection _connection;
+        private readonly IModel _channel;
+        private readonly EventingBasicConsumer _consumer;
         public Worker(ILogger<Worker> logger, AirshipClient airship, Config config)
         {
             _airship = airship;
@@ -30,27 +33,42 @@ namespace MediaHuis.Notifications.WorkerService
             {
                 HostName = config.RabbitMqHostName,
             };
+            var queue = "push-notification";
+            _connection = _rabbitMqConnectionFactory.CreateConnection();
+            _channel = _connection.CreateModel();
+            _channel.QueueDeclare(queue, false, false, false, null);
+            _consumer = new EventingBasicConsumer(_channel);
+            _consumer.Received += OnReceived;
+            _channel.BasicConsume(queue: queue,
+                autoAck: false, //this is on purpose
+                consumer: _consumer);
         }
 
+        
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            while (!stoppingToken.IsCancellationRequested)
-            {
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                
-                var queue = "push-notification";
-                using (var connection = _rabbitMqConnectionFactory.CreateConnection())
-                using (var channel = connection.CreateModel())
-                {
-                    channel.QueueDeclare(queue, false,false,false,null);
-                    var consumer = new EventingBasicConsumer(channel);
-                    consumer.Received += OnReceived;
-                    channel.BasicConsume(queue, true, consumer);
-                }
-                await Task.Delay(1000, stoppingToken);
-            }
+            //Needs a better HostService Implementation
+            _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            Console.Read();
         }
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    _channel?.Dispose();
+                    _connection?.Dispose();
+                }
+                _disposed = true;
+            }
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+        
         private void OnReceived(object? sender, BasicDeliverEventArgs e)
         {
             using (var scope = IoC.ServiceProvider.CreateScope())
@@ -69,10 +87,10 @@ namespace MediaHuis.Notifications.WorkerService
             
                 n.Version += 1;
                 n.Status = (NotificationStatus) (int) notification.Status;
-
+            
                 var newEvent = n.MapToEvent();
                 _ctx.NotificationEvents.Add(newEvent);
-
+            
                 _ctx.SaveChanges();
             }
         }

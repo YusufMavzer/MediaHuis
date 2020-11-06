@@ -10,6 +10,13 @@ namespace MediaHuis.Notifications.Api.Controllers
     [Route("/api/notifications")]
     public class NotificationController: Controller
     {
+    
+        [HttpGet]
+        public ActionResult Test()
+        {
+            return Ok("Hello World");
+        }
+        
         [HttpPost]
         public async Task<ActionResult> PushNotification([FromBody] PushNotificationRequest payload, [FromServices] NotificationContext ctx, [FromServices] ServiceBus bus)
         {

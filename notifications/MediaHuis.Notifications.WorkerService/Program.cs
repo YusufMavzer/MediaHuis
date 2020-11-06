@@ -35,7 +35,8 @@ namespace MediaHuis.Notifications.WorkerService
                     services.AddSingleton<AirshipClient>();
                     services.AddHostedService<Worker>();
                     IoC.ServiceProvider = services.BuildServiceProvider();
-                });
+                })
+                .UseConsoleLifetime();
             return host;
         }
     }

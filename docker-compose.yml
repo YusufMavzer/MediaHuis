@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
   media-huis-sql-server-db:
     container_name: media-huis-sql-server-db
@@ -14,3 +14,23 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
+  notifcation-api:
+    container_name: notifcation-api
+    build:
+      context: ./notifications
+      dockerfile: api.Dockerfile
+    image: notification-api:latest
+    ports:
+      - 5000:80
+    depends_on:
+      - media-huis-sql-server-db
+      - media-huis-rabbitmq
+  notifcation-worker:
+    container_name: notifcation-worker
+    build:
+      context: ./notifications
+      dockerfile: worker.Dockerfile
+    image: notification-worker:latest
+    depends_on:
+      - media-huis-sql-server-db
+      - media-huis-rabbitmq
